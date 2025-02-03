@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: citibike
+    database: RAW
+    schema: city_bike
+    tables:
+      - name: citibike_trips
+    

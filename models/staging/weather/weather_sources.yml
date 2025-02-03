@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: weatherdata
+    database: RAW
+    schema: weather
+    tables:
+      - name: weatherdata_ny
