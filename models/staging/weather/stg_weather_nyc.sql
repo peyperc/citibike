@@ -3,9 +3,13 @@ with
 
     renamed as (
         select
-            to_timestamp(data:time::int) as readingtime,
+            to_timestamp(data:time::int) as start_time,
+            lead(start_time) over (partition by DATA:city:id::int order by start_time) as end_time,
+            data:city:id::int as city_id,
+            data:city:country::string as country,
+            data:city:name::string as city,
             data:weather[0]:main::string as weather,
-            data:weather[0]:id::string as id,
+            data:weather[0]:id::string as weather_id,
             data:main:humidity::int as humidity,
             data:main:pressure::int as pressure,
             data:main:temp::number(8, 2) as temp,
